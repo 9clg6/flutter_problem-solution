@@ -32,3 +32,10 @@ et
         child: Container(
           padding: const EdgeInsets.all(16),
           child:
+
+### Faire qu'une row prenne la hauteur de son parent et pas de la column la plus haute : 
+
+Wrapping it inside a IntrinsicHeight
+This will calculate your widget height and then pass it to the column 
+
+No more infinite height error
