@@ -39,3 +39,99 @@ Wrapping it inside a IntrinsicHeight
 This will calculate your widget height and then pass it to the column 
 
 No more infinite height error
+
+### Configurer Firebase pour plusieurs flavor/env :
+
+- flutterfire configure --project=x-prod --out=lib/application/config/firebase_options_prod.dart --ios-bundle-id=x.x.x --ios-out=ios/config/prod/GoogleService-Info.plist --android-package-name=x.x.x --android-out=android/app/src/prod/google-services.json
+- flutterfire configure --project=x-dev --out=lib/application/config/firebase_options_dev.dart --ios-bundle-id=x.x.x --ios-out=ios/config/dev/GoogleService-Info.plist --android-package-name=x.x.x --android-out=android/app/src/dev/google-services.json
+avec
+- GoogleService-Info.plist & google-services.json dans les bons dossiers
+- firebase.json avec les build configurations :
+- 
+  ```
+  {
+  "flutter": {
+    "platforms": {
+      "android": {
+        "buildConfigurations": {
+          "src/dev": {
+            "projectId": x-x",
+            "appId": "1:x",
+            "fileOutput": "android/app/src/dev/google-services.json"
+          },
+          "src/staging": {
+            "projectId": "x-x",
+            "appId": "1:x",
+            "fileOutput": "android/app/src/staging/google-services.json"
+          },
+          "src/prod": {
+            "projectId": "x-x",
+            "appId": "1:x",
+            "fileOutput": "android/app/src/prod/google-services.json"
+          }
+        }
+      },
+      "ios": {
+        "buildConfigurations": {
+          "Debug-dev": {
+            "projectId": "x-x",
+            "appId": "1:x",
+            "uploadDebugSymbols": true,
+            "fileOutput": "ios/config/dev/GoogleService-Info.plist"
+          },
+          "Debug-staging": {
+            "projectId": "x-x",
+            "appId": "1:x",
+            "uploadDebugSymbols": true,
+            "fileOutput": "ios/config/staging/GoogleService-Info.plist"
+          },
+          "Debug-prod": {
+            "projectId": "x-x",
+            "appId": "1:x",
+            "uploadDebugSymbols": true,
+            "fileOutput": "ios/config/prod/GoogleService-Info.plist"
+          },
+          "Release-dev": {
+            "projectId": "x-x",
+            "appId": "1:x",
+            "uploadDebugSymbols": true,
+            "fileOutput": "ios/config/dev/GoogleService-Info.plist"
+          },
+          "Release-staging": {
+            "projectId": "x-x",
+            "appId": "1:x",
+            "uploadDebugSymbols": true,
+            "fileOutput": "ios/config/staging/GoogleService-Info.plist"
+          },
+          "Release-prod": {
+            "projectId": "x-x",
+            "appId": "1:x",
+            "uploadDebugSymbols": true,
+            "fileOutput": "ios/config/prod/GoogleService-Info.plist"
+          }
+        }
+      },
+      "dart": {
+        "lib/application/config/firebase_options_dev.dart": {
+          "projectId": "x-x",
+          "configurations": {
+            "ios": "1:x"
+          }
+        },
+        "lib/application/config/firebase_options_preprod.dart": {
+          "projectId": "x-x",
+          "configurations": {
+            "ios": "1:x"
+          }
+        },
+        "lib/application/config/firebase_options_prod.dart": {
+          "projectId": "x-x",
+          "configurations": {
+            "ios": "1:x"
+          }
+        }
+      }
+    }
+  }
+}
+
