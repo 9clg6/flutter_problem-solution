@@ -135,3 +135,6 @@ avec
   }
 }
 
+- Si on reçoit pas la notification push FCM, vérifier si :
+  - On a bien configuré la clé APN (.p8) sur Firebase Messaging. Attention il peut seulement être DL une fois, donc bien le stocker lors de la configuration
+
