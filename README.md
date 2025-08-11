@@ -42,8 +42,15 @@ No more infinite height error
 
 ### Configurer Firebase pour plusieurs flavor/env :
 
-- flutterfire configure --project=x-prod --out=lib/application/config/firebase_options_prod.dart --ios-bundle-id=x.x.x --ios-out=ios/config/prod/GoogleService-Info.plist --android-package-name=x.x.x --android-out=android/app/src/prod/google-services.json
-- flutterfire configure --project=x-dev --out=lib/application/config/firebase_options_dev.dart --ios-bundle-id=x.x.x --ios-out=ios/config/dev/GoogleService-Info.plist --android-package-name=x.x.x --android-out=android/app/src/dev/google-services.json
+- flutterfire configure \
+  --project=x \
+  --out=lib/application/config/firebase_options_prod.dart \
+  --ios-bundle-id=x \
+  --ios-out=ios/flavors/prod/GoogleService-Info.plist \
+  --android-package-name=x \
+  --android-out=android/app/src/prod/google-services.json \
+  --platforms=android,ios
+
 avec
 - GoogleService-Info.plist & google-services.json dans les bons dossiers
 - firebase.json avec les build configurations :
